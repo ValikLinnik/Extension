@@ -16,6 +16,20 @@ public static class ExtensionMethods
         return (collection == null || !collection.Any());
     }
 
+    public static bool IndexIsNotInRange<T>(this IEnumerable<T> collection, int index)
+    {
+        if(collection.IsNullOrEmpty()) throw new Exception("ExtensionMethods.IndexIsNotInRange(Collection is null)");
+        return (index < 0 || index >= collection.Count());
+    }
+
+    public static int GetNextIndex<T>(this IEnumerable<T> collection, int currentIndex)
+    {
+        if(collection.IsNullOrEmpty()) throw new Exception("ExtensionMethods.GetNextIndex(Collection is null)");
+
+        var next = currentIndex + 1;
+        return (currentIndex < 0) || (next >= collection.Count()) ? 0 : next;
+    }
+
     public static T RemoveRandomItem<T>(this List<T> list)
     {
         if(list.IsNullOrEmpty())
@@ -43,11 +57,12 @@ public static class ExtensionMethods
         {
             item = list[0];
         }
-        else
-        do {
+        else do 
+        {
             randomIndex = Random.Range(0, list.Count);
             item = list[randomIndex];
-            } while(array.Contains(item)); 
+        } 
+        while(array.Contains(item)); 
         
         list.Remove(item);
         return item;
