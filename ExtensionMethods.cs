@@ -6,6 +6,11 @@ using Random = UnityEngine.Random;
 
 public static class ExtensionMethods
 {
+    public static T ToType<T>(this object obj) where T : class
+    {
+        return obj as T;
+    }
+
     public static bool IsNull(this object obj)
     {
         return obj == null;
