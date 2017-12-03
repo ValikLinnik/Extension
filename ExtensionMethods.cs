@@ -11,7 +11,7 @@ public static class ExtensionMethods
         return obj as T;
     }
 
-    public static bool IsNull(this object obj)
+    public static bool IsNull<T>(this T obj) where T : class
     {
         return obj == null;
     }
