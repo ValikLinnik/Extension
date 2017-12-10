@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using Random = UnityEngine.Random;
+using UnityEngine;
 
 public static class ExtensionMethods
 {
@@ -92,7 +93,7 @@ public static class ExtensionMethods
         return (Enum)(array.GetValue(index));
     }
 
-public static void WaitAndDo(this MonoBehaviour mono, float time, Action action)
+    public static void WaitAndDo(this MonoBehaviour mono, float time, Action action)
     {
         if(mono == null) return;
         mono.StartCoroutine(CoroutineWaitAndDo(time, action));

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class QuietComponent<T>: OverrodeOperators where T: Component
+public class QuietComponent<T>: OverrodeOperator where T: Component
 {
     private MonoBehaviour _monoBehaviour;
     private T _component;
