@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -91,5 +91,18 @@ public static class ExtensionMethods
         var index = Random.Range(0,array.Length);
         return (Enum)(array.GetValue(index));
     }
+
+public static void WaitAndDo(this MonoBehaviour mono, float time, Action action)
+    {
+        if(mono == null) return;
+        mono.StartCoroutine(CoroutineWaitAndDo(time, action));
+    }
+
+    private static IEnumerator CoroutineWaitAndDo(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+        if(action != null) action();
+    }
+
 }
 
