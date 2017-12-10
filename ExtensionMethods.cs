@@ -86,11 +86,11 @@ public static class ExtensionMethods
         return item;
     }
 
-    public static Enum GetRandomItem(this Enum myEnum)
+    public static T GetRandomItem<T>(this Enum myEnum)
     {
         var array = Enum.GetValues(myEnum.GetType());
         var index = Random.Range(0,array.Length);
-        return (Enum)(array.GetValue(index));
+        return (T)array.GetValue(index);
     }
 
     public static void WaitAndDo(this MonoBehaviour mono, float time, Action action)
